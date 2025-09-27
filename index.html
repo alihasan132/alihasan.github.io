@@ -1,98 +1,217 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WANTED — Ali Hasan</title>
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ali Hasan</title>
+  <style>
+    /* === BASIC BODY === */
     body {
-        background-color: #f2e6d1;
-        font-family: 'Times New Roman', serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
+      margin: 0;
+      padding: 0;
+      background: black;
+      color: #00ff99;
+      font-family: 'Courier New', monospace;
+      overflow-x: hidden;
+      position: relative;
     }
-    .poster {
-        width: 400px;
-        padding: 30px;
-        background: #f9f4e8;
-        border: 8px solid #000;
-        box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
-        text-align: center;
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
     }
-    .poster h1 {
-        font-size: 36px;
-        letter-spacing: 5px;
-        margin: 0;
-        border-bottom: 3px solid black;
-        padding-bottom: 10px;
-    }
-    .poster img {
-        margin-top: 15px;
-        width: 200px;
-        height: auto;
-        border: 3px solid black;
-    }
-    .poster .wanted-name {
-        font-size: 32px;
-        font-weight: bold;
-        margin-top: 10px;
-        text-transform: uppercase;
-    }
-    .poster .details {
-        margin-top: 15px;
-        font-size: 16px;
-        text-align: left;
-        line-height: 1.5;
-    }
-    .poster .story {
-        margin-top: 15px;
-        font-size: 14px;
-        text-align: justify;
-        border-top: 2px solid black;
-        padding-top: 10px;
-    }
-    .poster .footer {
-        margin-top: 20px;
-        font-size: 14px;
-        font-weight: bold;
-        border-top: 2px solid black;
-        padding-top: 10px;
-    }
-</style>
+    h1 {
+      font-size: 3rem;
+      color: #00ff99;
+      text-shadow: 0 0 10px #00ff99, 0 0 20px #ff0033;
+      animation: glitchTitle 2s infinite;
+    }/* === GLITCH TITLE === */
+@keyframes glitchTitle {
+  0% { text-shadow: 2px 2px #ff0033, -2px -2px #00ffff; }
+  25% { text-shadow: -2px 0 #ff0, 2px 2px #00ffff; }
+  50% { text-shadow: 2px -2px #ff0033, -2px 2px #00ff99; }
+  75% { text-shadow: -2px 2px #ff0, 2px -2px #ff0033; }
+  100% { text-shadow: 2px 2px #ff0033, -2px -2px #00ffff; }
+}
+
+section {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem 1rem;
+  line-height: 1.7;
+}
+
+h2 {
+  color: #ff0033;
+  text-shadow: 0 0 6px #ff0033;
+  margin-bottom: 1rem;
+}
+
+p, li {
+  font-size: 1rem;
+  animation: textGlitch 6s infinite;
+}
+
+/* === TEXT GLITCH === */
+@keyframes textGlitch {
+  0% { color: #00ff99; }
+  25% { color: #ff0033; }
+  50% { color: #00ffff; }
+  75% { color: #ff0; }
+  100% { color: #00ff99; }
+}
+
+.redacted {
+  background: #ff0033;
+  color: #000;
+  padding: 0 4px;
+}
+
+/* === MATRIX RAIN === */
+canvas#matrixRain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* === POPUP === */
+.popup {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(10,0,20,0.9);
+  border: 2px solid #ff0033;
+  box-shadow: 0 0 15px #ff0033, 0 0 25px #00ff99;
+  padding: 1rem 2rem;
+  z-index: 9999;
+  font-size: 1rem;
+  color: #fff;
+  font-family: 'Tahoma', sans-serif;
+  display: none;
+  animation: popupFlicker 1s infinite alternate;
+}
+@keyframes popupFlicker {
+  from { box-shadow: 0 0 5px #ff0033; opacity: 0.8; }
+  to { box-shadow: 0 0 20px #00ffff; opacity: 1; }
+}
+.popup::before {
+  content: 'SYSTEM WARNING';
+  display: block;
+  font-weight: bold;
+  color: #ff0033;
+  border-bottom: 1px solid #6600ff;
+  margin-bottom: .5rem;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  opacity: 0.6;
+  font-size: .8rem;
+}
+
+  </style>
 </head>
 <body>
+  <canvas id="matrixRain"></canvas>  <header>
+    <h1>Ali Hasan</h1>
+  </header>  <section>
+    <h2>Introduction</h2>
+    <p>Ali Hasan (born June 12, 2005) is an <span class="glitch-text">enigmatic</span> figure whose name resonates across dark networks. Legends depict him as a digital phantom, haunting systems with spectral fingerprints.</p>
+  </section>  <section>
+    <h2>Infamous Origins</h2>
+    <p>By 15, rumors whispered he breached systems considered untouchable. Forums saw posts vanish seconds after appearing. One chilling quote remains: <q>Reality is editable.</q></p>
+  </section>  <section>
+    <h2>The Blackout Incident</h2>
+    <p>In 2021, several grids went dark simultaneously. Screens glowed with one repeating line: 12/06/2005. Many believe Ali Hasan authored this silent attack.</p>
+  </section>  <section>
+    <h2>Government Pursuit</h2>
+    <p>Reports suggest the FBI, CIA, and INTERPOL labeled his files <span class="redacted">CLASSIFIED</span>. An alleged bounty of $2,000,000 circulated, yet no one has surfaced to claim it.</p>
+  </section>  <section>
+    <h2>Disappearance</h2>
+    <p>By 2025, traces of Ali Hasan diminished. Some insist he merged with data. Others claim he was erased. Glitches across the internet — phantom code, corrupted images — are his supposed legacy.</p>
+  </section>  <section>
+    <h2>Legacy & Myth</h2>
+    <p>Communities attempt to decode fragments linked to him. Many fail. Some compile into eerie messages: <q>I am still here.</q></p>
+  </section>  <section>
+    <h2>Timeline</h2>
+    <ul>
+      <li><strong>2005:</strong> Birth of Ali Hasan</li>
+      <li><strong>2015:</strong> First online traces</li>
+      <li><strong>2020:</strong> Alleged breach of <span class="redacted">REDACTED</span></li>
+      <li><strong>2021:</strong> The Blackout Incident</li>
+      <li><strong>2025:</strong> Vanishing</li>
+    </ul>
+  </section>  <section>
+    <h2>Hidden Path</h2>
+    <p>If you dare uncover the truth, <a class="secret-link">click here</a>.</p>
+  </section>  <div id="popup" class="popup"></div>  <footer>
+    <p>&copy; 2015 Ali Hasan Archive. .</p>
+  </footer>  <script>
+    /* === MATRIX RAIN === */
+    const canvas = document.getElementById('matrixRain');
+    const ctx = canvas.getContext('2d');
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
 
-<div class="poster">
-    <h1>WANTED</h1>
+    const letters = 'アリハサン01☣∆░▒▓█><\\/'.split('');
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = [];
+    for(let x=0; x<columns; x++) drops[x]=1;
 
-    <!-- Image with Google Drive link + local fallback -->
-    <img src="https://drive.google.com/uc?export=view&id=1JxdVRhvnv6xk5lDRoJ4OOXTO41-01IKo" 
-         alt="Ali Hasan" 
-         onerror="this.onerror=null; this.src='ali.jpg';">
+    function drawMatrix(){
+      ctx.fillStyle='rgba(0,0,0,0.05)';
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle='#0F0';
+      ctx.font=fontSize+'px monospace';
+      for(let i=0;i<drops.length;i++){
+        let text=letters[Math.floor(Math.random()*letters.length)];
+        ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+        if(drops[i]*fontSize>canvas.height&&Math.random()>0.975) drops[i]=0;
+        drops[i]++;
+      }
+    }
+    setInterval(drawMatrix,50);
 
-    <div class="wanted-name">Ali Hasan</div>
+    /* === POPUPS === */
+    const popup=document.getElementById("popup");
+    const popupMessages=[
+      "SYSTEM BREACH DETECTED",
+      "YOU ARE BEING WATCHED",
+      "CONNECTION LOST — SEARCHING...",
+      "██████ FILE CORRUPTED",
+      "UNAUTHORIZED PRESENCE",
+      "FREQUENCY INTERCEPTED",
+      "REALITY GLITCH IN PROGRESS",
+      "ERROR: IDENTITY NOT FOUND",
+      "GHOST SIGNAL RECEIVED"
+    ];
 
-    <div class="details">
-        <p><strong>Alias:</strong> Hacker</p>
-        <p><strong>DOB:</strong> 12 June 2005</p>
-        <p><strong>Bounty:</strong> $100,000,000</p>
-        <p><strong>Status:</strong> WANTED DEAD OR ALIVE</p>
-    </div>
+    function showPopup(msg){
+      popup.innerText=msg;
+      popup.style.display="block";
+      setTimeout(()=>popup.style.display="none",5000);
+    }
 
-    <div class="story">
-        Ali Hasan, infamous in the hacker underground, became a legend at age 15 after breaching NASA’s classified servers, leaking mission-critical space data.  
-        Renowned for creating revolutionary hacking tools and covert gadgets, his exploits disrupted governments worldwide.  
-        Currently pursued by the FBI, CIA, and Interpol, Ali is said to operate from a hidden digital fortress.  
-        His name has become synonymous with cyber mastery — a shadow in the digital age.
-    </div>
+    function randomPopup(){
+      const msg=popupMessages[Math.floor(Math.random()*popupMessages.length)];
+      showPopup(msg);
+      const nextTime=5000+Math.random()*10000; // 5-15 sec
+      setTimeout(randomPopup,nextTime);
+    }
+    setTimeout(randomPopup,5000);
 
-    <div class="footer">
-        “The Code is His Law” — Last seen operating in the deep web
-    </div>
-</div>
-
-</body>
+    /* === SECRET LINK === */
+    let clicks=0;
+    document.querySelector(".secret-link").addEventListener("click",()=>{
+      clicks++;
+      showPopup("Decrypting secret...");
+      if(clicks>=3){
+        window.location.href="https://www.instagram.com/ig.alihasan";
+      }
+    });
+  </script></body>
 </html>
