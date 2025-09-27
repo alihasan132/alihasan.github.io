@@ -20,7 +20,6 @@
         background: #f9f4e8;
         border: 8px solid #000;
         box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
-        position: relative;
         text-align: center;
     }
     .poster h1 {
@@ -69,8 +68,10 @@
 <div class="poster">
     <h1>WANTED</h1>
 
-    <!-- Embedded Image -->
-    <img src="https://drive.google.com/uc?export=view&id=1JxdVRhvnv6xk5lDRoJ4OOXTO41-01IKo" alt="Ali Hasan">
+    <!-- Image with Google Drive link + local fallback -->
+    <img src="https://drive.google.com/uc?export=view&id=1JxdVRhvnv6xk5lDRoJ4OOXTO41-01IKo" 
+         alt="Ali Hasan" 
+         onerror="this.onerror=null; this.src='ali.jpg';">
 
     <div class="wanted-name">Ali Hasan</div>
 
